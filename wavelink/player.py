@@ -26,7 +26,7 @@ import time
 from typing import Optional, Union
 
 from disnake.ext import commands
-from disnake.gateway import disnakeWebSocket
+from disnake.gateway import DiscordWebSocket
 
 from .eqs import *
 from .errors import *
@@ -245,7 +245,7 @@ class Player:
             self.current = None
         self._new_track = False
 
-    def _get_shard_socket(self, shard_id: int) -> Optional[disnakeWebSocket]:
+    def _get_shard_socket(self, shard_id: int) -> Optional[DiscordWebSocket]:
         if isinstance(self.bot, commands.AutoShardedBot):
             try:
                 return self.bot.shards[shard_id].ws
